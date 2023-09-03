@@ -9,7 +9,7 @@ function getHole(index) {
   return document.getElementById(`hole${index}`);
 }
 
-function bonk(element) {
+function hit(element) {
   if (!element.isTrusted) return; 
 
   if (element.target.matches('.hole_has-mole')) {
@@ -39,5 +39,5 @@ function resetGame() {
 }
 
 holes.forEach((hole) => {
-  hole.addEventListener('click', bonk);
+  hole.addEventListener('click', hit);
 });
