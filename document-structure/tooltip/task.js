@@ -2,15 +2,14 @@ const tooltips = document.querySelectorAll('.has-tooltip');
 
 tooltips.forEach(tooltip => {
   tooltip.addEventListener('click', (event) => {
-    event.preventDefault(); // предотвращаем переход по ссылке
+    event.preventDefault();
     
-    const title = tooltip.getAttribute('title'); // получаем текст подсказки
-    const tooltipElement = document.querySelector('.tooltip'); // получаем элемент подсказки
+    const title = tooltip.getAttribute('title');
+    const tooltipElement = document.querySelector('.tooltip');
     
-    tooltipElement.innerText = title; // устанавливаем текст подсказки
-    tooltipElement.classList.add('tooltip_active'); // добавляем класс для отображения подсказки
-    
-    // рассчитываем позицию подсказки
+    tooltipElement.innerText = title;
+    tooltipElement.classList.add('tooltip_active');    
+   
     const rect = tooltip.getBoundingClientRect();
     const position = tooltip.getAttribute('data-position') || 'top';
     
