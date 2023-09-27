@@ -1,19 +1,25 @@
 const tooltips = document.querySelectorAll('.has-tooltip');
-
+let currentTooltip = null;
 tooltips.forEach(tooltip => {
   tooltip.addEventListener('click', (event) => {
     event.preventDefault();
 
     const title = tooltip.getAttribute('title');
     const tooltipElement = document.querySelector('.tooltip');
-    
-    if (tooltipElement.classList.contains('tooltip_active')) {
-      tooltipElement.classList.remove('tooltip_active'); 
-      return; 
+
+    if (tooltipElement === currentTooltip) {
+      tooltipElement.classList.remove('tooltip_active');
+      currentTooltip = null;
+      return;
     }
+
+    if (currentTooltip !== null) {
+      currentTooltip.classList.remove('tooltip_active');
+    }    
     
     tooltipElement.innerText = title;
     tooltipElement.classList.add('tooltip_active');
+    currentTooltip = tooltip;
     
     const rect = tooltip.getBoundingClientRect();
     const position = tooltip.getAttribute('data-position') || 'top';
