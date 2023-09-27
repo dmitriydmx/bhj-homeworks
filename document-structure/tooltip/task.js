@@ -3,13 +3,18 @@ const tooltips = document.querySelectorAll('.has-tooltip');
 tooltips.forEach(tooltip => {
   tooltip.addEventListener('click', (event) => {
     event.preventDefault();
-    
+
     const title = tooltip.getAttribute('title');
     const tooltipElement = document.querySelector('.tooltip');
     
+    if (tooltipElement.classList.contains('tooltip_active')) {
+      tooltipElement.classList.remove('tooltip_active'); 
+      return; 
+    }
+    
     tooltipElement.innerText = title;
-    tooltipElement.classList.add('tooltip_active');    
-   
+    tooltipElement.classList.add('tooltip_active');
+    
     const rect = tooltip.getBoundingClientRect();
     const position = tooltip.getAttribute('data-position') || 'top';
     
