@@ -4,8 +4,8 @@ let tasksForm = document.getElementById('tasks__form');
 
 function addTask(event) {
     event.preventDefault();
-    
-    if (taskInput.value) {
+    const taskValue = taskInput.value.trim()    
+    if (taskValue) {
         let task = document.createElement('div');
         task.className = 'task';
         task.innerHTML = `
