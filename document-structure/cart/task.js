@@ -24,9 +24,7 @@ products.forEach(product => {
   };
 
   const addToCart = () => {
-    const productInCart = Array.from(cartProducts.children).find(cartProduct => {
-      return cartProduct.dataset.id === productId;
-    });
+    const productInCart = Array.from(cartProducts.children).find(cartProduct => cartProduct.dataset.id === productId);
 
     const productImage = product.querySelector('.product__image').getAttribute('src');
 
