@@ -3,7 +3,7 @@ const clearButton = document.createElement('button');
 clearButton.textContent = 'Очистить содержимое';
 clearButton.addEventListener('click', function() {
   editor.value = '';
-  localStorage.setItem('editorValue', '');
+  localStorage.removeItem('editorValue');
 });
 
 editor.addEventListener('input', function() {
@@ -13,9 +13,7 @@ editor.addEventListener('input', function() {
 
 window.addEventListener('DOMContentLoaded', function() {
   const savedValue = localStorage.getItem('editorValue');
-  if (savedValue) {
     editor.value = savedValue;
-  }
 });
 
 const card = document.querySelector('.card');
