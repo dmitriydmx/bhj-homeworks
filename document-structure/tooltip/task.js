@@ -1,5 +1,6 @@
 const tooltips = document.querySelectorAll('.has-tooltip');
 let currentTooltip = null;
+
 tooltips.forEach(tooltip => {
   tooltip.addEventListener('click', (event) => {
     event.preventDefault();
@@ -7,17 +8,17 @@ tooltips.forEach(tooltip => {
     const title = tooltip.getAttribute('title');
     const tooltipElement = document.querySelector('.tooltip');
 
-    if (tooltipElement === currentTooltip) {
-      tooltipElement.classList.remove('tooltip_active');
-      currentTooltip = null;
+    if (tooltipElement.innerText === title) {
+      tooltipElement.classList.toggle('tooltip_active');
       return;
     }
-
-    if (currentTooltip !== null) {
-      currentTooltip.classList.remove('tooltip_active');
-    }    
     
     tooltipElement.innerText = title;
+    
+    if (currentTooltip !== null) {
+      currentTooltip.classList.remove('tooltip_active');
+    }
+    
     tooltipElement.classList.add('tooltip_active');
     currentTooltip = tooltip;
     
